@@ -1,13 +1,16 @@
 # azure-ai-projects
 # Azure Sentiment Analysis with Python
+This project demonstrates how to use Azure's Language Service for sentiment analysis.  
+It processes customer reviews and returns sentiment scores (positive, neutral, or negative).  
 
 ## Description
 This project uses Azure Cognitive Services and Python to perform sentiment analysis on text data.
 
-## Technologies Used
+## Tech Used
 - Python
 - Azure Cognitive Services (Language Service)
 - VS Code
+- Git & GitHub
 
 ## ⚙️ How to Run
 1. Clone the repo: `git clone <YOUR_GITHUB_REPO_URL>`
