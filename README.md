@@ -17,6 +17,17 @@ This project uses Azure Cognitive Services and Python to perform sentiment analy
 ## Sample Output
 { "documents": [ { "id": "1", "sentiment": "positive", "confidenceScores": { "positive": 0.98, "neutral": 0.01, "negative": 0.01 } } ] }
 
+## 📊 Sample Data
+You can test the sentiment analysis using the following sample data:
+```json
+{
+  "documents": [
+    { "id": "1", "text": "I love this product! It's amazing." },
+    { "id": "2", "text": "The service was terrible. I'm disappointed." },
+    { "id": "3", "text": "It was an average experience, nothing special." }
+  ]
+}
+
 ## Author
 Mukesh Sheoran
 
