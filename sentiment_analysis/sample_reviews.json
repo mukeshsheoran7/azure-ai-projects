@@ -1,0 +1,8 @@
+{
+    "documents": [
+      {"id": "1", "language": "en", "text": "The phone has a great camera but poor battery life."},
+      {"id": "2", "language": "en", "text": "Excellent customer support, highly recommend."},
+      {"id": "3", "language": "en", "text": "Slow delivery but the product quality is good."}
+    ]
+  }
+  
