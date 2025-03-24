@@ -1,35 +1,53 @@
 import requests
 import json
 
-# Replace with your Azure endpoint and API key
-endpoint = "https://sentiment-analysis-ai3.cognitiveservices.azure.com/text/analytics/v3.1/sentiment"
-api_key = "DRZXgERx7RXMkNaX1z5cVk6vtLX56ioeDFctPQZ9s3kvovYnzk6BJQQJ99BCACYeBjFXJ3w3AAAaACOGSVYD"
+# Azure Language Service Config
+ENDPOINT = "https://sentiment-analysis-ai3.cognitiveservices.azure.com"
+API_KEY = "DRZXgERx7RXMkNaX1z5cVk6vtLX56ioeDFctPQZ9s3kvovYnzk6BJQQJ99BCACYeBjFXJ3w3AAAaACOGSVYD"
+API_URL = f"{ENDPOINT}/text/analytics/v3.1/sentiment"
 
-# Review sample
-data = {
-    "documents": [
-        {"id": "1", "language": "en", "text": "I absolutely love this product, but the delivery was terrible."},
-        {"id": "2", "language": "en", "text": "The item was broken on arrival. I am very disappointed."},
-        {"id": "3", "language": "en", "text": "Great quality and fast delivery. Highly recommended!"}
-    ]
-}
+# File path containing the reviews
+file_path = "reviews/reviews1.txt"
 
-# Send the request
+# Read the review content
+with open(file_path, "r") as file:
+    reviews = [file.read()]
+
+# Prepare the request body
+documents = [{"id": str(i + 1), "language": "en", "text": review} for i, review in enumerate(reviews)]
+
 headers = {
-    "Ocp-Apim-Subscription-Key": api_key,
+    "Ocp-Apim-Subscription-Key": API_KEY,
     "Content-Type": "application/json"
 }
 
-response = requests.post(endpoint, headers=headers, json=data)
+# Make the API call
+response = requests.post(API_URL, headers=headers, json={"documents": documents})
+result = response.json()
 
-# Print the result
-if response.status_code == 200:
-    results = response.json()
-    for doc in results["documents"]:
-        print(f"Review ID: {doc['id']}")
-        print(f"Sentiment: {doc['sentiment']}")
-        print(f"Confidence Scores: {doc['confidenceScores']}")
-        print("-" * 50)
-else:
-    print(f"Error: {response.status_code}")
-    print(response.text)
+def display_results (sentiment):
+    """Display Sentiment and Key Phrase Extraction results"""
+    print("\n=== Sentiment Analysis Result===")
+    print(json.dumps(sentiment,indent=4))
+  
+display_results(result)
+
+# Improved Output Formatting
+print("\n--- Sentiment Analysis Results ---\n")
+for doc in result['documents']:
+    print(f"📄 **Document ID:** {doc['id']}")
+    print(f"🛑 Sentiment: {doc['sentiment'].capitalize()}")
+    
+    confidence = doc['confidenceScores']
+    print(f"✔️ Positive: {confidence['positive']:.2%}")
+    print(f"⚠️ Neutral: {confidence['neutral']:.2%}")
+    print(f"❌ Negative: {confidence['negative']:.2%}")
+    
+    if 'sentences' in doc:
+        print("\n🔍 **Key Sentences:**")
+        for sentence in doc['sentences']:
+            print(f"- {sentence['text']} (Sentiment: {sentence['sentiment'].capitalize()})")
+
+    print("\n" + "="*50 + "\n")
+    
+    
