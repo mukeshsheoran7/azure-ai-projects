@@ -1,0 +1,9 @@
+https://sentiment-analysis-ai3.cognitiveservices.azure.com/
+
+Key 1 -
+
+DRZXgERx7RXMkNaX1z5cVk6vtLX56ioeDFctPQZ9s3kvovYnzk6BJQQJ99BCACYeBjFXJ3w3AAAaACOGSVYD
+
+
+Key 2 -
+DRZXgERx7RXMkNaX1z5cVk6vtLX56ioeDFctPQZ9s3kvovYnzk6BJQQJ99BCACYeBjFXJ3w3AAAaACOGSVYD	

@@ -1,0 +1,7 @@
+{
+    "documents": [
+      { "id": "1", "text": "I love this product! It's amazing." },
+      { "id": "2", "text": "The service was terrible. I'm disappointed." },
+      { "id": "3", "text": "It was an average experience, nothing special." }
+    ]
+  }

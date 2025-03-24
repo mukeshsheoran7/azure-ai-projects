@@ -20,7 +20,7 @@ if x>5:
 else:
     print("X is smaller")
 
-for i in range(1):
+for i in range(x-5):
     print (i)
 
 reviews = ["This is great!", "I hate it", "Average product"]  
